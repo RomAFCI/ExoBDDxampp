@@ -16,6 +16,7 @@ try {
     $sql = "SELECT arme.nom AS `nomArme`, surnom, degat
     FROM `arme`
     INNER JOIN `personnage` ON arme.idArme = personnage.idArmeUtilise";
+    
 
     //EXECUTION
     $req = $pdo->prepare($sql);
