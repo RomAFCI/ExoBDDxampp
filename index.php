@@ -31,7 +31,7 @@ try {
         }
     }
     foreach ($resultats as $key => $value) {
-        echo $value["surnom"] . " est en possesion de " . $value["nomArme"] . " qui inflige " . $value["degat"] . " de dégats ";
+        echo $value["surnom"] . " est en possesion de l'arme " . $value["nomArme"] . " qui inflige " . $value["degat"] . " de dégats ";
         echo "<br>";
         echo "<br>";
     }
