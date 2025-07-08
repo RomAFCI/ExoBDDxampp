@@ -16,18 +16,21 @@ try {
     $sql = "SELECT arme.nom AS `nomArme`, surnom, degat
     FROM `arme`
     INNER JOIN `personnage` ON arme.idArme = personnage.idArmeUtilise";
-    
 
-    //EXECUTION
+
+    //PREPARATION + EXECUTION
     $req = $pdo->prepare($sql);
     $req->execute();
-    $resultats = $req->fetchAll();
 
-    //EXPLOITATION
+    //REPONSE - EXPLOITATION DES DONNEES
+    $resultats = $req->fetchAll(PDO::FETCH_ASSOC);
+    // PDO::FETCH_ASSOC évite les données en doublon
     var_dump($resultats);
+
+    //correction avec un SELECT * personnage
     foreach ($resultats as $key => $value) {
         foreach ($value as $key2 => $value2) {
-            echo $value2;
+            echo $key2 . " : " . $value2;
             echo "<br>";
         }
     }
@@ -41,3 +44,39 @@ try {
 }
 
 ?>
+
+
+
+
+//CORRECTION
+
+// Manière 1
+
+foreach ($results as $key => $value) {
+echo 'idPersonnage : ' . $value['idPersonnage'] . '<br>';
+echo 'nom : ' . $value['nom'] . '<br>';
+echo 'surnom : ' . $value['surnom'] . '<br>';
+echo 'level : ' . $value['level'] . '<br>';
+echo 'idArmeUtilise : ' . $value['idArmeUtilise'] . '<br>';
+echo 'idClasse : ' . $value['idClasse'] . '<br>';
+
+// foreach ($value as $key2 => $value2) {
+// echo $key2 . " : " . $value2;
+// echo '<br>';
+// }
+echo "<br>";
+echo "<br>";
+}
+
+
+// Manière 2
+
+// foreach ($results as $key => $value) {
+// foreach ($value as $key2 => $value2) {
+// echo $key2 . " : " . $value2;
+// echo '<br>';
+// }
+
+// echo "<br>";
+// echo "<br>";
+// }
